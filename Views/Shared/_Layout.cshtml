@@ -99,20 +99,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>@Html.ActionLink("Add Product","AddProduct","Home")<i class="fa fa-circle-o"></i></li>
-                            <li>@Html.ActionLink("Edit/Update Product","EditUpdateProduct","Home")<i class="fa fa-circle-o"></i> View/Edit Products</a></li>
+                            <li>@Html.ActionLink("Edit/Delete Product","EditUpdateProduct","Home")<i class="fa fa-circle-o"></i> View/Edit Products</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-th"></i>
-                            <span>Manage Catagory</span>
-                            <i class="label pull-right bg-green">+</i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>@Html.ActionLink("Add Catagory","addCatagory","Home")<i class="fa fa-circle-o"></i> </li>
-                            <li>@Html.ActionLink("Edit/Update Catagory","editUpdateCatagory","Home")<i class="fa fa-circle-o"></i> </li>
-                        </ul>
-                    </li>
+                    
                     
                    
                     <li class="treeview">
@@ -123,7 +113,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>@Html.ActionLink("Add User","AddUser","Home")<i class="fa fa-circle-o"></i></li>
-                            <li>@Html.ActionLink("Edit/Update User","editUpdateUser","Home")<i class="fa fa-circle-o"></i></li>
+                            <li>@Html.ActionLink("Edit/Delete User","editUpdateUser","Home")<i class="fa fa-circle-o"></i></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -133,30 +123,17 @@
                             <i class="label pull-right bg-green">+</i>
                         </a>
                         <ul class="treeview-menu">
-                                    <li>@Html.ActionLink("Edit/Update Customer","ViewCustomer","Home")<i class="fa fa-circle-o"></i></li>
+                                    <li>@Html.ActionLink("Delete Customer","ViewCustomer","Home")<i class="fa fa-circle-o"></i></li>
                         </ul>
                     </li>
                     <li>
                     
-                        <a href="seatReservations.html">
-                            <i class="fa fa-table"></i> <span>Orders</span>
-                        </a>
+                       @Html.ActionLink("Orders", "Order", "Home")
+                            <i class="fa fa-table"></i> 
+                        
                     </li>
                     
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-th"></i>
-                            <span>Settings</span>
-                            <i class="label pull-right bg-green">+</i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="generalSet.html"><i class="fa fa-circle-o"></i>General Setting</a></li>
-                            <li><a href="logoSet.html"><i class="fa fa-circle-o"></i>Logo</a></li>
-                        </ul>
-                    </li>
-
-
-                </ul>
+                   
             </section>
             <!-- /.sidebar -->
         </aside>

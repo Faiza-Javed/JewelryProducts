@@ -1,4 +1,9 @@
-﻿
+﻿@model MC_Products.Models.Product
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -18,7 +23,7 @@
 
     <section class="content">
 
-        <form method="post" action="~/Home/add_Product">
+        <form method="post" action="~/Home/updateProduct">
             <br>
             <br>
             <br>
@@ -26,15 +31,17 @@
                 <div class="form-group col-md-8">
                     <label class="col-md-3 control-lable" for="dob">Product Name</label>
                     <div class="col-md-9">
-                        <input type="text" path="dob" id="Name" name="Name" class="form-control input-sm" />
-                    </div>
+                        <input type="text" path="dob" id="Name" name="Name" value="@Model.Name" class="form-control input-sm" />
+                        <input type="hidden"  id="Id" name="Id" value="@Model.Id" class="form-control input-sm" />
+
+                         </div>
                     <label class="col-md-3 control-lable" for="dob">Catagory</label>
                     <div class="col-md-9">
-                        <input type="text" path="dob" id="Cat_Name" name="Cat_Name" class="form-control input-sm" />
+                        <input type="text" path="dob" id="Cat_Name" name="Cat_Name" value="@Model.Cat_Name" class="form-control input-sm" />
                     </div><br />
                     <label class="col-md-3 control-lable" for="dob">Price</label>
                     <div class="col-md-9">
-                        <input type="text" path="dob" id="Price" class="form-control input-sm" name="Price" />
+                        <input type="text" path="dob" id="Price" class="form-control input-sm" name="Price" value="@Model.Price" />
                     </div>
                 </div>
             </div>
@@ -57,4 +64,5 @@
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
     </div>
+
 

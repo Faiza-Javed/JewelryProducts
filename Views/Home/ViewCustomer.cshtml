@@ -1,4 +1,4 @@
-﻿@model List<MC_Products.Models.User>
+﻿@model List<MC_Products.Models.Order>
 @{
     ViewBag.Title = "ViewCustomer";
 }
@@ -6,7 +6,40 @@
 @{
     ViewBag.Title = "editUpdateCatagory";
 }
+<script src="~/Scripts/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+   
 
+        $(".btn_delete").click(function () {
+
+            //Save the link in a variable called element
+            var element = $(this);
+            var id=$('#Id')
+            //Find the id of the link that was clicked
+            var del_id = element.attr("Id");
+
+            //Built a url to send
+            var Id = 'id=' + del_id;
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("deleteCustomer", "Home")",
+                    data: id,
+                    success: function () {
+                        alert("Data deleted successfully");
+
+                    }
+                });
+            $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+           .animate({ opacity: "hide" }, "slow");
+
+
+
+        });
+        //return false;
+
+    });
+</script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -48,7 +81,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach (var data in Model) { 
-                                    <tr>
+                                    <tr class="record">
                                        
                                         <td>@data.Id</td>
                                         <td>@data.Name</td>
@@ -56,10 +89,10 @@
                                         <td>@data.email</td>
                                         <td>
                                             <form action="" method="get">
-                                                <input type="hidden" name="cid" value="1">
-                                                <input type="submit" class="btn btn-warning" value="EDIT">
-                                                <input type="submit" class="btn btn-warning" value="DELETE">
+                                                <input type="hidden" name="Id" id="Id" value="@data.Id">
+                                                <a href="#" class="btn btn-danger btn_delete" id=@data.Id>Delete</a>
                                             </form>
+
 
                                         </td>
                                     </tr>

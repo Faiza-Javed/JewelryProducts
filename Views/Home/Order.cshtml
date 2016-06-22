@@ -1,5 +1,4 @@
-﻿
-@model List<Jewwllery.Models.Order>
+﻿@model List<MC_Products.Models.Order>
 @{
     ViewBag.Title = "EditUpdateProduct";
 }
@@ -37,10 +36,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Cataogory</th>
+                                        <th>userName</th>
                                         <th>Name of Product</th>
-                                        <th>Price</th>
-                                        <th>Action</th>
+                                        <th>OrderDate</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,17 +47,10 @@
                                     {
                                         <tr>
                                             <td>@data.Id</td>
-                                            <td>@data.Cat_Name</td>
-                                            <td>@data.Name</td>
-                                            <td>@data.Price</td>
-                                            <td>
-                                                <form action="" method="get">
-                                                    <input type="hidden" name="cid" value="1">
-                                                    <input type="submit" class="btn btn-warning" value="EDIT">
-                                                    <input type="submit" class="btn btn-warning" value="DELETE">
-                                                </form>
-
-                                            </td>
+                                            <td>@data.userName</td>
+                                            <td>@data.productName</td>
+                                            <td>21/6/2016</td>
+                                 
                                         </tr>
                                     }
 

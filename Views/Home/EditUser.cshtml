@@ -1,7 +1,9 @@
-﻿
+﻿@model MC_Products.Models.User
 @{
-    ViewBag.Title = "AddUser";
+    ViewBag.Title = "EditUser";
 }
+
+
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,7 +24,7 @@
 
     <section class="content">
 
-        <form method="post" action="~/Home/add_user">
+        <form method="post" action="~/Home/UpdateUser">
             <br>
             <br>
             <br>
@@ -30,7 +32,9 @@
                 <div class="form-group col-md-8">
                     <label class="col-md-3 control-lable" for="dob">Name</label>
                     <div class="col-md-9">
-                        <input type="text" path="dob" id="Name" name="Name" class="form-control input-sm" />
+                        <input type="text" path="dob" id="Name" name="Name" value="@Model.Name" class="form-control input-sm" />
+                        <input type="hidden" path="dob" id="Id" name="Id" value="@Model.Id" class="form-control input-sm" />
+
                     </div>
                 </div>
             </div>
@@ -38,7 +42,7 @@
                 <div class="form-group col-md-8">
                     <label class="col-md-3 control-lable" for="dob">Contact</label>
                     <div class="col-md-9">
-                        <input type="text" path="dob" id="Contact" name="Contact" class="form-control input-sm" />
+                        <input type="text" path="dob" id="Contact" value="@Model.Contact" name="Contact" class="form-control input-sm" />
                     </div>
                 </div>
             </div>
@@ -46,7 +50,7 @@
                 <div class="form-group col-md-8">
                     <label class="col-md-3 control-lable" for="dob">email</label>
                     <div class="col-md-9">
-                        <input type="text" path="dob" id="email" name="email" class="form-control input-sm" />
+                        <input type="text" path="dob" id="email" name="email" class="form-control input-sm" value="@Model.email" />
                     </div>
                 </div>
             </div>
@@ -54,7 +58,7 @@
                 <div class="form-group col-md-8">
                     <label class="col-md-3 control-lable" for="dob">Password</label>
                     <div class="col-md-9">
-                        <input type="text" path="dob" id="Password" name="Password" class="form-control input-sm" />
+                        <input type="text" path="dob" id="Password" name="Password" class="form-control input-sm" value="@Model.Password" />
                     </div>
                 </div>
             </div>
@@ -84,4 +88,6 @@
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
     </div>
+
+
 

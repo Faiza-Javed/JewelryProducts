@@ -1,7 +1,42 @@
-﻿
+﻿@model List<MC_Products.Models.User>
 @{
     ViewBag.Title = "editUpdateUser";
 }
+<script src="~/Scripts/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+
+        $(".btn_delete").click(function () {
+
+            //Save the link in a variable called element
+            var element = $(this);
+            var id=$('#Id')
+            //Find the id of the link that was clicked
+            var del_id = element.attr("Id");
+
+            //Built a url to send
+            var Id = 'id=' + del_id;
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("deleteUser", "Home")",
+                    data: id,
+                    success: function () {
+                        alert("Data deleted successfully");
+
+                    }
+                });
+            $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+           .animate({ opacity: "hide" }, "slow");
+
+
+
+        });
+        //return false;
+
+    });
+</script>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -37,92 +72,32 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Contact</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
+                                       <th>email</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ali Ahmad</td>
-                                        <td>73452</td>
-                                        <td>ali</td>
-                                        <td>123</td>
-                                        <td>
+                                    @foreach (var data in Model)
+                                    {
+                                        <tr class="record">
+                                            <td>@data.Id</td>
+                                            <td>@data.Name</td>
+                                            <td>@data.email</td>
+                                            <td>@data.Contact</td>
+                                              <input type="hidden" value="@data.Id" id="Id" name="Id" />
+                                            <td>
+                                                <form action="~/Home/EditUser" method="post">
 
-                                            <form action="" method="get">
-                                                <input type="hidden" name="cid" value="1">
-                                                <input type="submit" class="btn btn-warning" value="EDIT">
-                                                <input type="submit" class="btn btn-warning" value="DELETE">
-                                            </form>
+                                                    <input type="hidden" value="@data.Id" id="Id" name="Id" />
+                                                    <input type="submit" class="btn btn-success" value="Update">
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Aisha Saleem</td>
-                                        <td>73452</td>
-                                        <td>aisha</td>
-                                        <td>123</td>
-                                        <td>
+                                                        <a href="#" class="btn btn-danger btn_delete" id=@data.Id>Delete</a>
+                                                </form>
 
-                                            <form action="" method="get">
-                                                <input type="hidden" name="cid" value="2">
-                                                <input type="submit" class="btn btn-warning" value="EDIT">
-                                                <input type="submit" class="btn btn-warning" value="DELETE">
-                                            </form>
+                                       
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Zainab Tariq</td>
-                                        <td>73452</td>
-                                        <td>zainab</td>
-                                        <td>123</td>
-                                        <td>
-
-                                            <form action="" method="get">
-                                                <input type="hidden" name="cid" value="3">
-                                                <input type="submit" class="btn btn-warning" value="EDIT">
-                                                <input type="submit" class="btn btn-warning" value="DELETE">
-                                            </form>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Aneeza Waheed</td>
-                                        <td>73452</td>
-                                        <td>annie</td>
-                                        <td>123</td>
-                                        <td>
-
-                                            <form action="" method="get">
-                                                <input type="hidden" name="cid" value="4">
-                                                <input type="submit" class="btn btn-warning" value="EDIT">
-                                                <input type="submit" class="btn btn-warning" value="DELETE">
-                                            </form>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Tooba Nasim</td>
-                                        <td>73452</td>
-                                        <td>tooba</td>
-                                        <td>123</td>
-                                        <td>
-
-                                            <form action="" method="get">
-                                                <input type="hidden" name="cid" value="5">
-                                                <input type="submit" class="btn btn-warning" value="EDIT">
-                                                <input type="submit" class="btn btn-warning" value="DELETE">
-                                            </form>
-
-                                        </td>
-                                    </tr>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>

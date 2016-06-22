@@ -2,6 +2,40 @@
 @{
     ViewBag.Title = "EditUpdateProduct";
 }
+<script src="~/Scripts/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+
+        $(".btn_delete").click(function () {
+
+            //Save the link in a variable called element
+            var element = $(this);
+            var id=$('#Id')
+            //Find the id of the link that was clicked
+            var del_id = element.attr("Id");
+
+            //Built a url to send
+            var Id = 'id=' + del_id;
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("deleteProduct", "Home")",
+                    data: id,
+                    success: function () {
+                        alert("Data deleted successfully");
+
+                    }
+                });
+            $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+           .animate({ opacity: "hide" }, "slow");
+
+
+
+        });
+        //return false;
+
+    });
+</script>
 
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -44,19 +78,22 @@
                                     </thead>
                                     <tbody>
                                         @foreach (var data in Model) { 
-                                 <tr>
+                                 <tr class="record">
                                             <td>@data.Id</td>
                                             <td>@data.Cat_Name</td>
                                             <td>@data.Name</td>
                                             <td>@data.Price</td>
-											<td>
-											<form action="" method="get">
-											<input type="hidden" name="cid" value="1">
-								            <input type="submit" class="btn btn-warning" value="EDIT">
-											<input type="submit" class="btn btn-warning" value="DELETE">
-											</form>
-											
-											</td>
+                                              <input type="hidden" value="@data.Id" id="Id" name="Id" />
+                                     <td>
+                                     <form action="~/Home/EditProduct" method="post">
+                                         <td>
+                                             <input type="hidden" value="@data.Id" id="Id" name="Id" />
+                                             <input type="submit" class="btn btn-success" value="Update" >
+                                             <a href="#" class="btn btn-danger btn_delete" id=@data.Id>Delete</a>
+                                     </form>
+
+                                            </td>
+
                                         </tr>
                                         }
 	                                 
@@ -72,8 +109,7 @@
 		 </section>
 
         </div>
-      </aside><!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
+      </aside>
+    
       <div class="control-sidebar-bg"></div>
-    </div>
+ 
